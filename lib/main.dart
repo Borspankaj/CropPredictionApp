@@ -13,26 +13,20 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   void getSoilInfo() {
-    print('Working') ;
+    print('Working');
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: MaterialApp(
-        color: Colors.white,
+    return Material(
 
-        home : Container (
-          child : OutlinedButton(
-                  onPressed: () { getSoilInfo() ;},
-                  child: Text('Get soil Info' , textDirection: TextDirection.ltr,) ,
-
+      color: Colors.white,
+      child: Center(
+        child: Text(
+          'Hello',
+          textDirection: TextDirection.ltr,
         ),
-
       ),
-
-    ),
     );
   }
 }
-
