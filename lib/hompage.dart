@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Prediction.dart';
 import 'predictedcrop.dart';
+import 'Fertilizers.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -55,8 +56,24 @@ class _HomePageState extends State<HomePage> {
                         context,
                         MaterialPageRoute(builder: (details) => const PredictedCrop(recordName: "recordName")),
                       );}, child: const Text('Get Prediction from device'))),
-            )
-
+            ) ,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 200,
+                height: 50,
+                child: ElevatedButton(
+                    style : ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightGreen ,
+                      foregroundColor: Colors.white ,
+                    ),
+                    onPressed: () { Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (details) => const Fertilizer()),
+                    );} ,
+                    child: const Text('Fertilizer Suggestion')),
+              ),
+            ) ,
     ],
           ),
         ),

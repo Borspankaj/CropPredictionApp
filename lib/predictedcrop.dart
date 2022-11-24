@@ -33,7 +33,8 @@ class _PredictedCropState extends State<PredictedCrop> {
                   textAlign: TextAlign.center ,
                   style:
                   const TextStyle(
-                    color : Colors.black ,
+                    color : Colors.lime ,
+                    fontFamily: 'FredokaOne',
                     fontSize: 30.0 ,
                  ),),),
               ),
@@ -41,10 +42,11 @@ class _PredictedCropState extends State<PredictedCrop> {
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
                   child : Text(
-                    widget.recordName ,
+                    widget.recordName.toUpperCase() ,
                     textAlign: TextAlign.center ,
                     style: const TextStyle(
-                      color : Colors.black ,
+                      color : Colors.lime ,
+                      fontFamily: 'FredokaOne',
                       fontSize: 30.0 ,
                 ),) ,),
               ),

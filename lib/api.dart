@@ -1,6 +1,11 @@
 import 'package:http/http.dart' as http;
 
-Future Getprediction ( url) async{
-  http.Response Response = await http.get(url) ;
-  return Response.body;
+Future getprediction ( url) async{
+  http.Response response = await http.get(url) ;
+  return response.body;
+}
+
+Future getfertilizer (url) async{
+  http.Response  response = await http.get(url) ;
+  return response.body ;
 }

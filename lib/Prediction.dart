@@ -12,8 +12,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // var prediction = " ";
-  // var textforpred = " ";
+  var prediction = " ";
+
   var decode ;
   var values = {"nitrogen" : "" ,
     "phosphorus" : "" ,
@@ -139,9 +139,10 @@ class _HomeState extends State<Home> {
                       params += "${values[k]} ";
                       }
                       var url = Uri.parse(
-                      'http://10.0.2.2:5000//api?params=$params');
-                      var data = await Getprediction(url);
+                      'http://10.0.2.2:5000//get-prediction?params=$params');
+                      var data = await getprediction(url);
                       decode = jsonDecode(data);
+                      prediction = decode['prediction'] ;
                       } ,
 
 
@@ -165,7 +166,7 @@ class _HomeState extends State<Home> {
                   Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) =>
-                  PredictedCrop(recordName: decode)),
+                  PredictedCrop(recordName: prediction)),
                   );
 
                 } ,
@@ -179,19 +180,6 @@ class _HomeState extends State<Home> {
 
 
 
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Center( child : Text(textforpred ,style: const TextStyle(
-          //     color : Colors.blue ,
-          //     fontSize: 30.0 ,),),),
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Center( child : Text(prediction ,style: const TextStyle(
-          //     color : Colors.blue ,
-          //     fontSize: 30.0 ,
-          //   ),) ,),
-          // ),
         ]
         ),
       ),
@@ -203,7 +191,4 @@ class _HomeState extends State<Home> {
 
 
 }
-// setState( () {
-//   var prediction = decode['prediction'] ;
-//   var textforpred = "Most Suitable Crop For Your Farm " ;}
-// );
+
