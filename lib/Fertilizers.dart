@@ -19,7 +19,7 @@ class _FertilizerState extends State<Fertilizer> {
   "potassium" : "" , };
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( home: Scaffold(
+    return MaterialApp( debugShowCheckedModeBanner: false,home: Scaffold(
       appBar: AppBar(
         title : const Text("KHETI"),
         centerTitle : true ,

@@ -29,6 +29,10 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  firebase_core :
+  cloud_firestore:
+  firebase_auth:
+  firebase_database:
   flutter:
     sdk: flutter
   animated_splash_screen: ^1.3.0

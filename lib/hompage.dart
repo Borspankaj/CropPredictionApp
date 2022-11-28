@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'Prediction.dart';
 import 'predictedcrop.dart';
 import 'Fertilizers.dart';
+import 'iotdevicedata.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -13,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   var details = {'crop' : 'jute '} ;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( home: Scaffold(
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Scaffold(
         appBar: AppBar(
           title : const Text("KHETI"),
           centerTitle : true ,
@@ -54,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onPressed: () {Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (details) => const PredictedCrop(recordName: "recordName")),
+                        MaterialPageRoute(builder: (details) => const Iotdevice()),
                       );}, child: const Text('Get Prediction from device'))),
             ) ,
             Padding(

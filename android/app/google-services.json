@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1079278239476",
+    "project_id": "kheti-c3fee",
+    "storage_bucket": "kheti-c3fee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079278239476:android:98ab11c17a0a69140968a1",
+        "android_client_info": {
+          "package_name": "com.example.cropyeild"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079278239476-q17n3fpnsdv2d6mdak81192ksa9ni1i8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXlQ2Ehvw9l2rDjkcu1nnLYkq00IEsjNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079278239476-q17n3fpnsdv2d6mdak81192ksa9ni1i8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

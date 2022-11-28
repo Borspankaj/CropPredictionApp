@@ -11,7 +11,7 @@ class suggestedfertilizer extends StatefulWidget {
 class _suggestedfertilizerState extends State<suggestedfertilizer> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp(debugShowCheckedModeBanner: false,
         home: Scaffold(
         appBar:AppBar(
         title : const Text("KHETI"),

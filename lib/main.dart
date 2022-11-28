@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'api.dart';
-import 'dart:convert';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'hompage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyHome());
 }
 class MyHome extends StatelessWidget {
