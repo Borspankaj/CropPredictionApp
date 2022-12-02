@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'api.dart';
 import 'dart:convert';
 import 'package:cropyeild/predictedcrop.dart';
-
+import 'dart:ui';
 
 class Iotdevice extends StatefulWidget {
   const Iotdevice({Key? key}) : super(key: key);
@@ -64,7 +64,7 @@ class _IotdeviceState extends State<Iotdevice> {
       final String n = "${event.snapshot.value}";
       setState(() {
         values['n'] = n ;
-        _n = n ;
+        _n = n;
       });
     });
     database.child('test/sagar/P').onValue.listen((event) {
@@ -93,78 +93,358 @@ class _IotdeviceState extends State<Iotdevice> {
     return MaterialApp(debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title : const Text("KHETI"),
+          title : const Text("Soil Information" , style: TextStyle(
+            fontFamily: 'BebasNeue' ,
+            color: Colors.black ,
+          )),
           centerTitle : true ,
-          backgroundColor : Colors.lightGreen,
-    // actions : <Widget> [ IconButton(onPressed: () {}, icon: const Icon(Icons.add_card_outlined))] ,
-    ),
+          backgroundColor : const Color(0xFF50C878),
+          // actions : <Widget> [ IconButton(onPressed: () {}, icon: const Icon(Icons.add_card_outlined))] ,
+        ),
 
-      body : ListView(children: [
-        Text(_n) ,
-        Text(_p) ,
-        Text(_k) ,
-        Text(_rf) ,
-        Text(_t) ,
-        Text(_h) ,
-        Text(_ph) ,
+      body : Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            width: 200,
-            height: 50,
-            child: ElevatedButton(
-              style : ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightGreen ,
-                foregroundColor: Colors.white ,
+              image: AssetImage("assets/predic.jpg"),
+              fit: BoxFit.fill),
+        ),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 3.0 , sigmaY: 3.0),
+          child: SingleChildScrollView(
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.00),
+                        color: Colors.green.shade200,
+                      ),
+                      height: 120,
+                      width: 120,
+
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Nitrogen' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 15,
+
+                              ),
+                            ),
+                            Text(_n ,textAlign: TextAlign.center,style: const TextStyle(
+                              fontFamily: 'BebasNeue',
+                              fontSize: 40,
+
+                            ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ) ,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.00),
+                        color: Colors.green.shade200,
+                      ),
+                      height: 120,
+                      width: 120,
+
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Phosphorus' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 15,
+
+                              ),
+                            ),
+                            Text(_p ,
+                                textAlign: TextAlign.center ,
+                              style: const TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 40,
+
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ) ,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.00),
+                        color: Colors.green.shade200,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Potassium' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 15,
+
+                              ),
+                            ),
+                            Text(_k ,
+                                textAlign: TextAlign.center ,
+                              style: const TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 40,
+
+                              ),),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ) ,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.00),
+                        color: Colors.green.shade200,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Rainfall' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 15,
+
+                              ),
+                            ),
+                            Text(_rf ,
+                                textAlign: TextAlign.center ,
+                              style: const TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 40,
+
+                              ),),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ) ,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.00),
+                        color: Colors.green.shade200,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Temperature' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 15,
+
+                              ),
+                            ),
+                            Text(_t ,
+                                textAlign: TextAlign.center ,
+                              style: const TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 40,
+
+                              ),),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ) ,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.00),
+                        color: Colors.green.shade200,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Humidity' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 15,
+
+                              ),
+                            ),
+                            Text(_h ,
+                                textAlign: TextAlign.center ,
+                              style: const TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 40,
+
+                              ),),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ) ,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.00),
+                        color: Colors.green.shade200,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('pH' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 15,
+
+                              ),
+                            ),
+                            Text(_ph ,
+                                textAlign: TextAlign.center ,
+                              style: const TextStyle(
+                                fontFamily: 'BebasNeue',
+                                fontSize: 40,
+
+                              ),),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ) ,
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  width: 200,
+                  height: 50,
+                  child: ElevatedButton(
+                    style : ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF50C878)),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white) ,
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(60.00)))),
+                        shadowColor: MaterialStateProperty.all<Color>(Colors.white)
+                    ),
+                    onPressed: ()
+                    async {
+                      var params = "";
+                      for (var k in values.keys) {
+                        params += "${values[k]} ";
+                      }
+                      var url = Uri.parse(
+                          'http://flask-env-1.eba-3wdrxkaf.us-east-1.elasticbeanstalk.com///get-prediction?params=$params');
+                      var data = await getprediction(url);
+                      decode = jsonDecode(data);
+                      prediction = decode['prediction'] ;
+                    } ,
+
+
+
+                    child : const Text ('Get This data' , style: TextStyle(
+                      fontFamily: 'BebasNeue',
+                      fontSize: 15,
+
+                    ),),
+                  ),
+                ),
               ),
-              onPressed: ()
-              async {
-                var params = "";
-                for (var k in values.keys) {
-                  params += "${values[k]} ";
-                }
-                var url = Uri.parse(
-                    'http://10.0.2.2:5000//get-prediction?params=$params');
-                var data = await getprediction(url);
-                decode = jsonDecode(data);
-                prediction = decode['prediction'] ;
-              } ,
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  width: 200,
+                  height: 50,
+                  child: ElevatedButton(
+                    style : ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF50C878)),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white) ,
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(60.00)))),
+                        shadowColor: MaterialStateProperty.all<Color>(Colors.white)
+                    ),
+                    onPressed: ()
+                    {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>
+                            PredictedCrop(recordName: prediction)),
+                      );
+
+                    } ,
 
 
 
-              child : const Text ('Get This data'),
+                    child : const Text ('Predict' , style: TextStyle(
+                      fontFamily: 'BebasNeue',
+                      fontSize: 15,
+
+                    ),),
+                  ),
+                ),
+              ),
+            ],
             ),
           ),
         ),
-
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            width: 200,
-            height: 50,
-            child: ElevatedButton(
-              style : ElevatedButton.styleFrom(
-                backgroundColor: Colors.lightGreen ,
-                foregroundColor: Colors.white ,
-              ),
-              onPressed: ()
-              {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>
-                      PredictedCrop(recordName: prediction)),
-                );
-
-              } ,
-
-
-
-              child : const Text ('Predict'),
-            ),
-          ),
-        ),
-      ],
       )
 
 
