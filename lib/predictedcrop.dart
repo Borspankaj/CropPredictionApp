@@ -56,7 +56,9 @@ class _PredictedCropState extends State<PredictedCrop> {
                           color : Colors.white ,
                           fontFamily: 'BebasNeue',
                           fontSize: 35.0 ,
-                       ),),),
+                       ),
+                      ),
+                      ),
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -76,9 +78,12 @@ class _PredictedCropState extends State<PredictedCrop> {
                               color : Colors.white ,
                               fontFamily: 'BebasNeue',
                               fontSize: 50.0 ,
-                        ),) ,),
+                        ),
+                          ),
+                        ),
                       ),
                     ),
+
 
                   ],
                 ),

@@ -29,6 +29,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cool_dropdown:
   web_smooth_scroll :
   flutter_markdown :
   blur: ^3.0.0
@@ -88,6 +89,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+     - family : Dosis
+       fonts:
+         - asset: fonts/Dosis-VariableFont_wght.ttf
      - family: FredokaOne
        fonts:
          - asset: fonts/FredokaOne-Regular.ttf

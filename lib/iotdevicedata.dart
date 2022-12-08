@@ -4,7 +4,11 @@ import 'api.dart';
 import 'dart:convert';
 import 'package:cropyeild/predictedcrop.dart';
 import 'dart:ui';
-
+import 'suggestedfertilizer.dart';
+const List<String> list = <String>['rice', 'maize', 'chickpea', 'kidneybeans', 'pigeonpeas',
+  'mothbeans', 'mungbean', 'blackgram', 'lentil', 'pomegranate',
+  'banana', 'mango', 'grapes', 'watermelon', 'muskmelon', 'apple',
+  'orange', 'papaya', 'coconut', 'cotton', 'jute', 'coffee'];
 class Iotdevice extends StatefulWidget {
   const Iotdevice({Key? key}) : super(key: key);
 
@@ -13,16 +17,17 @@ class Iotdevice extends StatefulWidget {
 }
 
 class _IotdeviceState extends State<Iotdevice> {
-  var _t = "";
-  var _h = "" ;
-  var _ph = "" ;
-  var _n = "" ;
-  var _p = "" ;
-  var _k = "" ;
-  var _rf = "" ;
+  var _t = "0";
+  var _h = "0" ;
+  var _ph = "0.00" ;
+  var _n = "0.00" ;
+  var _p = "0.00" ;
+  var _k = "0.00" ;
+  var _rf = "0" ;
   var prediction = " ";
-
+  String _crop = list.first ;
   var decode ;
+  var suggestion = "";
   var values = {"n" : "" ,
     "p" : "" ,
     "k" : "" ,
@@ -122,7 +127,7 @@ class _IotdeviceState extends State<Iotdevice> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.00),
-                        color: Colors.green.shade200,
+                        color: Color(0xFF009970),
                       ),
                       height: 120,
                       width: 120,
@@ -137,12 +142,14 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 15,
+                                color: Colors.white ,
 
                               ),
                             ),
                             Text(_n ,textAlign: TextAlign.center,style: const TextStyle(
                               fontFamily: 'BebasNeue',
                               fontSize: 40,
+                              color: Colors.white ,
 
                             ),
                             ),
@@ -156,7 +163,7 @@ class _IotdeviceState extends State<Iotdevice> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.00),
-                        color: Colors.green.shade200,
+                        color: Color(0xFF009970),
                       ),
                       height: 120,
                       width: 120,
@@ -171,6 +178,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 15,
+                                color: Colors.white ,
 
                               ),
                             ),
@@ -179,6 +187,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: const TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 40,
+                                color: Colors.white ,
 
                               ),
                             ),
@@ -200,7 +209,7 @@ class _IotdeviceState extends State<Iotdevice> {
                       width: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.00),
-                        color: Colors.green.shade200,
+                        color: Color(0xFF009970),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -212,6 +221,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 15,
+                                color: Colors.white ,
 
                               ),
                             ),
@@ -220,6 +230,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: const TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 40,
+                                color: Colors.white ,
 
                               ),),
                           ],
@@ -234,7 +245,7 @@ class _IotdeviceState extends State<Iotdevice> {
                       width: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.00),
-                        color: Colors.green.shade200,
+                        color: Color(0xFF009970),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -246,6 +257,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 15,
+                                color: Colors.white ,
 
                               ),
                             ),
@@ -254,6 +266,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: const TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 40,
+                                color: Colors.white ,
 
                               ),),
                           ],
@@ -268,7 +281,7 @@ class _IotdeviceState extends State<Iotdevice> {
                       width: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.00),
-                        color: Colors.green.shade200,
+                        color: Color(0xFF009970),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -280,6 +293,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 15,
+                                color: Colors.white ,
 
                               ),
                             ),
@@ -288,6 +302,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: const TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 40,
+                                color: Colors.white ,
 
                               ),),
                           ],
@@ -307,7 +322,7 @@ class _IotdeviceState extends State<Iotdevice> {
                       width: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.00),
-                        color: Colors.green.shade200,
+                        color: Color(0xFF009970),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -319,6 +334,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 15,
+                                color: Colors.white ,
 
                               ),
                             ),
@@ -327,6 +343,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: const TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 40,
+                                color: Colors.white ,
 
                               ),),
                           ],
@@ -341,7 +358,7 @@ class _IotdeviceState extends State<Iotdevice> {
                       width: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.00),
-                        color: Colors.green.shade200,
+                        color: Color(0xFF009970),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -353,6 +370,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 15,
+                                color: Colors.white ,
 
                               ),
                             ),
@@ -361,6 +379,7 @@ class _IotdeviceState extends State<Iotdevice> {
                               style: const TextStyle(
                                 fontFamily: 'BebasNeue',
                                 fontSize: 40,
+                                color: Colors.white ,
 
                               ),),
                           ],
@@ -386,6 +405,7 @@ class _IotdeviceState extends State<Iotdevice> {
                     ),
                     onPressed: ()
                     async {
+                      final navigator = Navigator.of(context);
                       var params = "";
                       for (var k in values.keys) {
                         params += "${values[k]} ";
@@ -395,16 +415,97 @@ class _IotdeviceState extends State<Iotdevice> {
                       var data = await getprediction(url);
                       decode = jsonDecode(data);
                       prediction = decode['prediction'] ;
+                      // ignore: use_build_context_synchronously
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>
+                            PredictedCrop(recordName: prediction)),
+                      );
                     } ,
 
 
 
-                    child : const Text ('Get This data' , style: TextStyle(
+                    child : const Text ('Predict Crop' , style: TextStyle(
                       fontFamily: 'BebasNeue',
                       fontSize: 15,
 
                     ),),
                   ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text ('Crop you want to grow !' , style: TextStyle(
+                  fontFamily: 'BebasNeue',
+                  fontSize: 40,
+
+                ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text ('Select Crop : -' , style: TextStyle(
+                      fontFamily: 'BebasNeue',
+                      fontSize: 25,
+
+
+                    ),
+                    ),
+
+
+                    DropdownButton<String>(
+                      value: _crop,
+
+                      icon: const Icon(Icons.arrow_downward),
+
+
+                      dropdownColor: const Color(0xFF6092E851),
+                      menuMaxHeight: 400,
+                      alignment: Alignment.center,
+                      borderRadius: BorderRadius.circular(15.00),
+                      style: const TextStyle(color: Colors.deepPurple),
+                      underline: Container(
+                        height: 2,
+
+                        color: Colors.deepPurpleAccent,
+                      ),
+
+                      onChanged: (String? value) {
+
+                        setState(() {
+                          _crop = value!;
+                          // values['crop'] = _crop;
+                        });
+                      },
+
+                      items: list.map<DropdownMenuItem<String>>((String value) {
+
+                        return DropdownMenuItem<String>(
+
+                          value: value,
+                          child: Text(value , style: const TextStyle(
+                            shadows: <Shadow>[Shadow(
+                              offset: Offset(2, 2),
+                              blurRadius: 5,
+
+                              color: Color(0xff646464),
+                            )],
+                            fontFamily: 'BebasNeue',
+                            fontSize: 22,
+                            color: Color(0xFFFFFFFF),
+                            decorationStyle: TextDecorationStyle.wavy
+
+
+                          ),
+
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ),
               ),
 
@@ -422,22 +523,30 @@ class _IotdeviceState extends State<Iotdevice> {
                         shadowColor: MaterialStateProperty.all<Color>(Colors.white)
                     ),
                     onPressed: ()
-                    {
+                    async {
+                      var params = '$_crop ${_n} ${_p} ${_k}' ;
+                      var url = Uri.parse(
+                          'http://flask-env-1.eba-3wdrxkaf.us-east-1.elasticbeanstalk.com/get-fertilizer?params=$params');
+                      var data = await getfertilizer(url);
+
+                      decode = jsonDecode(data);
+                      suggestion = decode['fert'] ;
+                      // ignore: use_build_context_synchronously
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) =>
-                            PredictedCrop(recordName: prediction)),
+                            suggestedfertilizer(recordName : suggestion)),
                       );
-
                     } ,
 
 
 
-                    child : const Text ('Predict' , style: TextStyle(
+                    child : const Text ('Get Info' , style: TextStyle(
                       fontFamily: 'BebasNeue',
-                      fontSize: 15,
+                      fontSize: 16,
 
-                    ),),
+                    ),
+                    ),
                   ),
                 ),
               ),
